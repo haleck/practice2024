@@ -43,52 +43,20 @@
   padding: 5px 5px 5px 90px;
 }
 
-.alt {
-  position: relative;
-  text-align: center;
-  margin: 10px 0;
-}
-.alt > hr {
-  border-top: 1px solid grey;
-  width: 100%;
-}
-.alt > span {
-  position: absolute;
-  top: -10px;
-  background-color: white;
-  padding: 0 10px;
-  transform: translateX(-50%);
-  color: grey;
-}
-
 h2 {
   text-align: center;
 }
 
-.sendAgain {
-  text-align: center;
-  font-size: 14px;
-  margin: 10px 0 15px 0;
-}
-.sendAgain > a:hover {
-  transition: all 0.25s;
-  color: #646cff;
-  cursor: pointer;
-}
-.sendAgain > span {
-  opacity: 0.5;
-}
-
-.registration {
+.login {
   display: flex;
   justify-content: center;
   font-size: 14px;
   margin: 10px 0 15px 0;
 }
-.registration:hover {
+.login:hover {
   transition: all 0.25s;
   color: #646cff;
   cursor: pointer;
 }
 
-/*# sourceMappingURL=AuthForm.module.css.map */
+/*# sourceMappingURL=RegForm.module.css.map */

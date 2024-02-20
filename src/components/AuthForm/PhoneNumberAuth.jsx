@@ -1,7 +1,10 @@
 import React, {useEffect, useRef, useState} from 'react';
 import classes from "./AuthForm.module.css";
+import {useNavigate} from "react-router-dom";
 
 const PhoneNumberAuth = ({authMethodChange}) => {
+    const navigate = useNavigate()
+
     const [phoneNumber, setPhoneNumber] = useState('+7');
     const [isSmsSent, setIsSmsSent] = useState(false);
     const [timer, setTimer] = useState(60)
@@ -128,6 +131,8 @@ const PhoneNumberAuth = ({authMethodChange}) => {
                     </form>
                 }
             </>
+
+            <a className={classes.registration} onClick={()=>navigate('/reg')}>Нет аккаунта? Регистрация</a>
 
             <div className={classes.alt}>
                 <hr />

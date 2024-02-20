@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import classes from "./AuthForm.module.css";
+import {useNavigate} from "react-router-dom";
 
 const EmailPasswordAuth = ({authMethodChange}) => {
+    const navigate = useNavigate()
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -44,6 +47,8 @@ const EmailPasswordAuth = ({authMethodChange}) => {
                 </div>
                 <button type="submit" className={classes.stdBtn + " " + classes.mainBtn}>Войти</button>
             </form>
+
+            <a className={classes.registration} onClick={()=>navigate('/reg')}>Нет аккаунта? Регистрация</a>
 
             <div className={classes.alt}>
                 <hr />
