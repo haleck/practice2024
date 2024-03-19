@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import classes from "./AuthForm.module.css";
+import classes from "../styles/FormsCommonStyles.module.css";
 import {useNavigate} from "react-router-dom";
 
 const PhoneNumberAuth = ({authMethodChange}) => {

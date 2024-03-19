@@ -43,6 +43,10 @@
   padding: 5px 5px 5px 90px;
 }
 
+h2 {
+  text-align: center;
+}
+
 .alt {
   position: relative;
   text-align: center;
@@ -59,10 +63,6 @@
   padding: 0 10px;
   transform: translateX(-50%);
   color: grey;
-}
-
-h2 {
-  text-align: center;
 }
 
 .sendAgain {
@@ -91,4 +91,16 @@ h2 {
   cursor: pointer;
 }
 
-/*# sourceMappingURL=AuthForm.module.css.map */
+.login {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  margin: 10px 0 15px 0;
+}
+.login:hover {
+  transition: all 0.25s;
+  color: #646cff;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=FormsCommonStyles.module.css.map */

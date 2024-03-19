@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import classes from "./AuthForm.module.css";
+import classes from "../styles/FormsCommonStyles.module.css";
 import EmailPasswordAuth from "./EmailPasswordAuth.jsx";
 import PhoneNumberAuth from "./PhoneNumberAuth.jsx";
 import TelegramBotAuth from "./TelegramBotAuth.jsx";

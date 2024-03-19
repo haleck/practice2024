@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import classes from "./PasswrdChangeForm.module.css";
+import classes from "../styles/FormsCommonStyles.module.css";
 import {useNavigate} from "react-router-dom";
 
 const PasswrdChangeForm = ({fromEmail}) => {
