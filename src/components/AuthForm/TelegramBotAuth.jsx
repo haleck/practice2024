@@ -1,34 +1,19 @@
 import React from 'react';
-import classes from "../styles/FormsCommonStyles.module.css";
-import {useNavigate} from "react-router-dom";
+import CustomLink from "../../UI/CustomLink/CustomLink.jsx";
+import Separator from "../../UI/Separator/Separator.jsx";
+import Button from "../../UI/StdBtn/Button.jsx";
 
 const TelegramBotAuth = ({authMethodChange}) => {
-    const navigate = useNavigate()
-
     return (
         <>
             Tg bot auth
-            <a className={classes.registration} onClick={()=>navigate('/reg')}>Нет аккаунта? Регистрация</a>
 
-            <div className={classes.alt}>
-                <hr />
-                <span>или</span>
-            </div>
+            <CustomLink path={'/reg'}>Нет аккаунта? Регистрация</CustomLink>
 
-            <div>
-                <button
-                    className={classes.stdBtn}
-                    onClick={ ()=> authMethodChange('email')}
-                >
-                    Вход по почте и паролю
-                </button>
-                <button
-                    className={classes.stdBtn}
-                    onClick={() => authMethodChange('phone')}
-                >
-                    Вход по номеру телефона
-                </button>
-            </div>
+            <Separator text={'или'}/>
+
+            <Button onClick={()=> authMethodChange('email')}>Вход по почте и паролю</Button>
+            <Button onClick={()=> authMethodChange('phone')}>Вход по номеру телефона</Button>
         </>
     );
 };

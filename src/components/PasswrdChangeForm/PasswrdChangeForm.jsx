@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import classes from "../styles/FormsCommonStyles.module.css";
 import {useNavigate} from "react-router-dom";
+import InputField from "../../UI/InputField/InputField.jsx";
+import Button from "../../UI/StdBtn/Button.jsx";
 
 const PasswrdChangeForm = ({fromEmail}) => {
     const navigate = useNavigate()
@@ -21,46 +23,40 @@ const PasswrdChangeForm = ({fromEmail}) => {
 
             {!changeRequestSent?
                 <form action="" onSubmit={handleSubmit}>
+                    {/*Если пользователь перешел не через письмо на почте - требуется ввести старый пароль*/}
                     {!fromEmail &&
-                        <div className={classes.inputBlock}>
-                            <label>Old:</label>
-                            <input
-                                type="password"
-                                name="oldPassword"
-                                value={oldPassword}
-                                onChange={(e) => setOldPassword(e.target.value)}
-                                required
-                            />
-                        </div>
+                        <InputField
+                            labelText={'Old:'}
+                            type="password"
+                            name="oldPassword"
+                            value={oldPassword}
+                            onChange={(e) => setOldPassword(e.target.value)}
+                            isRequired={true}
+                        />
                     }
-                    <div className={classes.inputBlock}>
-                        <label>New:</label>
-                        <input
-                            type="password"
-                            name="newPassword"
-                            value={newPassword}
-                            onChange={(e) => setNewPassword(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className={classes.inputBlock}>
-                        <label>Repeat:</label>
-                        <input
-                            type="password"
-                            name="repeatPassword"
-                            value={repeatPassword}
-                            onChange={(e) => setRepeatPassword(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <button type="submit" className={classes.stdBtn + " " + classes.mainBtn}>Сменить</button>
+                    {/*Иначе - пользователь восстанавливает пароль, который не знает*/}
+                    <InputField
+                        labelText={'New:'}
+                        type="password"
+                        name="newPassword"
+                        value={newPassword}
+                        onChange={(e) => setNewPassword(e.target.value)}
+                        isRequired={true}
+                    />
+                    <InputField
+                        labelText={'Repeat:'}
+                        type="password"
+                        name="repeatPassword"
+                        value={repeatPassword}
+                        onChange={(e) => setRepeatPassword(e.target.value)}
+                        isRequired={true}
+                    />
+                    <Button type={'submit'}>Сменить</Button>
                 </form>
             :
                 <div style={{textAlign: 'center'}}>
                     <div style={{margin: '10px 0'}}>Пароль был успешно изменен</div>
-                    <button className={classes.stdBtn} onClick={()=>navigate('/auth')}>
-                        ОК
-                    </button>
+                    <Button onClick={()=>navigate('/auth')}>ОК</Button>
                 </div>
             }
         </div>

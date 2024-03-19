@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import classes from "../styles/FormsCommonStyles.module.css";
 import {useNavigate} from "react-router-dom";
+import InputField from "../../UI/InputField/InputField.jsx";
+import Button from "../../UI/StdBtn/Button.jsx";
 
 const PasswrdRecoveryForm = () => {
     const navigate = useNavigate()
@@ -19,24 +21,20 @@ const PasswrdRecoveryForm = () => {
 
             {!linkIsSent?
                 <form action="" onSubmit={handleSubmit}>
-                    <div className={classes.inputBlock}>
-                        <label>Email:</label>
-                        <input
-                            type="email"
-                            name="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <button type="submit" className={classes.stdBtn + " " + classes.mainBtn}>Восстановить</button>
+                    <InputField
+                        labelText={'Email:'}
+                        type="email"
+                        name="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        isRequired={true}
+                    />
+                    <Button type={'submit'}>Восстановить</Button>
                 </form>
             :
                 <div style={{textAlign: 'center'}}>
                     <div style={{margin: '10px 0'}}>На вашу почту было отправлено письмо для восстановления пароля</div>
-                    <button className={classes.stdBtn} onClick={()=>navigate('/auth')}>
-                        ОК
-                    </button>
+                    <Button onClick={()=>navigate('/auth')}>ОК</Button>
                 </div>
             }
         </div>

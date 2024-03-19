@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import classes from "../styles/FormsCommonStyles.module.css";
-import {useNavigate} from "react-router-dom";
+import InputField from "../../UI/InputField/InputField.jsx";
+import Button from "../../UI/StdBtn/Button.jsx";
+import Separator from "../../UI/Separator/Separator.jsx";
+import CustomLink from "../../UI/CustomLink/CustomLink.jsx";
 
 const EmailPasswordAuth = ({authMethodChange}) => {
-    const navigate = useNavigate()
-
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -25,50 +25,33 @@ const EmailPasswordAuth = ({authMethodChange}) => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <div className={classes.inputBlock}>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className={classes.inputBlock}>
-                    <label>Password:</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button type="submit" className={classes.stdBtn + " " + classes.mainBtn}>Войти</button>
+                <InputField
+                    labelText="Email:"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    isRequired={true}
+                />
+                <InputField
+                    labelText="Password:"
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    isRequired={true}
+                />
+                <Button type="submit" styles={{backgroundColor: "rgba(36, 36, 36, 0.05)"}}>
+                    Войти
+                </Button>
             </form>
 
-            <a className={classes.registration} onClick={()=>navigate('/reg')}>Нет аккаунта? Регистрация</a>
+            <CustomLink path={'/reg'}>Нет аккаунта? Регистрация</CustomLink>
 
-            <div className={classes.alt}>
-                <hr />
-                <span>или</span>
-            </div>
+            <Separator text={"или"}/>
 
-            <div>
-                <button
-                    className={classes.stdBtn}
-                    onClick={ ()=> authMethodChange('phone')}
-                >
-                    Вход по номеру телефона
-                </button>
-                <button
-                    className={classes.stdBtn}
-                    onClick={() => authMethodChange('telegram')}
-                >
-                    Вход по коду из ТГ бота
-                </button>
-            </div>
+            <Button onClick={()=> authMethodChange('phone')}>Вход по номеру телефона</Button>
+            <Button onClick={() => authMethodChange('telegram')}>Вход по коду из ТГ бота</Button>
         </>
     );
 };
