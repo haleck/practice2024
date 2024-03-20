@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import classes from "../../components/styles/FormsCommonStyles.module.css";
+import classes from "./PhoneNumberInputField.module.css";
 
 const PhoneNumberInputField = ({ labelText, value, setValue}) => {
     const inputRef = useRef(null);

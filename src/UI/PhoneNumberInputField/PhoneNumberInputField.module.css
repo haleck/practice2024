@@ -1,0 +1,17 @@
+.inputBlock {
+  margin: 20px 0;
+  position: relative;
+}
+.inputBlock > label {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  opacity: 50%;
+}
+.inputBlock > input {
+  width: 100%;
+  padding: 5px 5px 5px 90px;
+}
+
+/*# sourceMappingURL=PhoneNumberInputField.module.css.map */

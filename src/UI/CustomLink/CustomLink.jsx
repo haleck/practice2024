@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from "../../components/styles/FormsCommonStyles.module.css";
 import {useNavigate} from "react-router-dom";
+import classes from "./CustomLink.module.css";
 
 const CustomLink = ({path ,children}) => {
     const navigate = useNavigate()

@@ -1,0 +1,13 @@
+.registration {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  margin: 10px 0 15px 0;
+}
+.registration:hover {
+  transition: all 0.25s;
+  color: #646cff;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=CustomLink.module.css.map */

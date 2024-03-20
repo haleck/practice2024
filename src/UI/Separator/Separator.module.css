@@ -1,0 +1,19 @@
+.alt {
+  position: relative;
+  text-align: center;
+  margin: 10px 0;
+}
+.alt > hr {
+  border-top: 1px solid grey;
+  width: 100%;
+}
+.alt > span {
+  position: absolute;
+  top: -10px;
+  background-color: white;
+  padding: 0 10px;
+  transform: translateX(-50%);
+  color: grey;
+}
+
+/*# sourceMappingURL=Separator.module.css.map */

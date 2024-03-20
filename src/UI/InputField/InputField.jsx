@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "../../components/styles/FormsCommonStyles.module.css";
+import classes from "./InputField.module.css";
 
 const InputField = ({labelText, ref, type, name, value, onChange, onKeyDown, onClick, isRequired=false}) => {
     return (

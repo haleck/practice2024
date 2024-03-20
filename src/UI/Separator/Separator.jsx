@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "../../components/styles/FormsCommonStyles.module.css";
+import classes from "./Separator.module.css";
 
 const Separator = ({text}) => {
     return (
