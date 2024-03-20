@@ -27,7 +27,7 @@ const PasswrdRecoveryForm = () => {
                         name="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        isRequired={true}
+                        required
                     />
                     <Button type={'submit'}>Восстановить</Button>
                 </form>

@@ -43,7 +43,7 @@ const PhoneNumberAuth = ({authMethodChange}) => {
                         id="code"
                         value={smsCode}
                         onChange={(e)=>setSmsCode(e.target.value)}
-                        isRequired={true}
+                        required
                     />
 
                     <Button type={"submit"}>ОК</Button>

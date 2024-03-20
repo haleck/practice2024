@@ -37,4 +37,10 @@ h2 {
   cursor: pointer;
 }
 
+.error {
+  color: red;
+  font-size: 12px;
+  margin: 10px 0;
+}
+
 /*# sourceMappingURL=FormsCommonStyles.module.css.map */

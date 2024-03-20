@@ -3,19 +3,12 @@ import InputField from "../../UI/InputField/InputField.jsx";
 import Button from "../../UI/StdBtn/Button.jsx";
 import Separator from "../../UI/Separator/Separator.jsx";
 import CustomLink from "../../UI/CustomLink/CustomLink.jsx";
+import {useInput} from "../../hooks/useInput.js";
+import classes from "../styles/FormsCommonStyles.module.css"
 
 const EmailPasswordAuth = ({authMethodChange}) => {
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-    });
-
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
+    const email = useInput('', {isEmpty: true, minLength: 3, maxLength: 10})
+    const password = useInput('', {isEmpty: true, minLength: 3, maxLength: 10})
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,21 +22,23 @@ const EmailPasswordAuth = ({authMethodChange}) => {
                     labelText="Email:"
                     type="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    isRequired={true}
+                    value={email.value}
+                    onChange={email.onChange}
+                    onBlur={email.onBlur}
+                    required
                 />
+                {email.isDirty && email.error && <div className={classes.error}>{email.errorText}</div>}
                 <InputField
                     labelText="Password:"
                     type="password"
                     name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    isRequired={true}
+                    value={password.value}
+                    onChange={password.onChange}
+                    onBlur={password.onBlur}
+                    required
                 />
-                <Button type="submit" styles={{backgroundColor: "rgba(36, 36, 36, 0.05)"}}>
-                    Войти
-                </Button>
+                {password.isDirty && password.error && <div className={classes.error}>{password.errorText}</div>}
+                <Button type="submit" disabled={email.error || password.error}>Войти</Button>
             </form>
 
             <CustomLink path={'/reg'}>Нет аккаунта? Регистрация</CustomLink>

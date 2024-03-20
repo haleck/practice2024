@@ -31,7 +31,7 @@ const PasswrdChangeForm = ({fromEmail}) => {
                             name="oldPassword"
                             value={oldPassword}
                             onChange={(e) => setOldPassword(e.target.value)}
-                            isRequired={true}
+                            required
                         />
                     }
                     {/*Иначе - пользователь восстанавливает пароль, который не знает*/}
@@ -41,7 +41,7 @@ const PasswrdChangeForm = ({fromEmail}) => {
                         name="newPassword"
                         value={newPassword}
                         onChange={(e) => setNewPassword(e.target.value)}
-                        isRequired={true}
+                        required
                     />
                     <InputField
                         labelText={'Repeat:'}
@@ -49,7 +49,7 @@ const PasswrdChangeForm = ({fromEmail}) => {
                         name="repeatPassword"
                         value={repeatPassword}
                         onChange={(e) => setRepeatPassword(e.target.value)}
-                        isRequired={true}
+                        required
                     />
                     <Button type={'submit'}>Сменить</Button>
                 </form>

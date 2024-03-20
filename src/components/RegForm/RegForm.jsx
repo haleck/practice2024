@@ -38,7 +38,7 @@ const RegForm = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    isRequired={true}
+                    required
                 />
                 <InputField
                     labelText={'Name:'}
@@ -46,7 +46,7 @@ const RegForm = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    isRequired={true}
+                    required
                 />
                 <InputField
                     labelText={'Surname:'}
@@ -54,7 +54,7 @@ const RegForm = () => {
                     name="surname"
                     value={formData.surname}
                     onChange={handleChange}
-                    isRequired={true}
+                    required
                 />
                 <InputField
                     labelText={'Password:'}
@@ -62,7 +62,7 @@ const RegForm = () => {
                     name="password"
                     value={formData.password}
                     onChange={handleChange}
-                    isRequired={true}
+                    required
                 />
                 <InputField
                     labelText={'Repeat:'}
@@ -70,7 +70,7 @@ const RegForm = () => {
                     name="repeat"
                     value={formData.repeat}
                     onChange={handleChange}
-                    isRequired={true}
+                    required
                 />
                 <Button type={'submit'}>Зарегистрироваться</Button>
             </form>
