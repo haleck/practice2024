@@ -5,9 +5,10 @@ import Button from "../../UI/StdBtn/Button.jsx";
 import PhoneNumberInputField from "../../UI/PhoneNumberInputField/PhoneNumberInputField.jsx";
 import CustomLink from "../../UI/CustomLink/CustomLink.jsx";
 import Separator from "../../UI/Separator/Separator.jsx";
+import {useInput} from "../../hooks/useInput.js";
 
 const PhoneNumberAuth = ({authMethodChange}) => {
-    const [phoneNumber, setPhoneNumber] = useState('+7');
+    const phoneNumber = useInput('+7', {isEmpty: true, isPhoneNumber: true})
     const [isSmsSent, setIsSmsSent] = useState(false);
     const [timer, setTimer] = useState(60)
     const [smsCode, setSmsCode] = useState('')
@@ -60,11 +61,13 @@ const PhoneNumberAuth = ({authMethodChange}) => {
                 <form onSubmit={handleSubmit}>
                     <PhoneNumberInputField
                         labelText={"Телефон:"}
-                        value={phoneNumber}
-                        setValue={setPhoneNumber}
+                        value={phoneNumber.value}
+                        setValue={phoneNumber.setValue}
+                        onBlur={phoneNumber.onBlur}
                     />
+                    {phoneNumber.isDirty && phoneNumber.error && <div className={classes.error}>{phoneNumber.errorText}</div>}
 
-                    <Button type={"submit"} onClick={(e)=>sendSms(e)}>
+                    <Button type={"submit"} onClick={(e)=>sendSms(e)} disabled={phoneNumber.error}>
                         Получить код
                     </Button>
                 </form>

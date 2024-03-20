@@ -5,31 +5,55 @@ export const useValidation = (value, validations={}) => {
 
     useEffect(() => {
         const newErrors = []
-        const sortedValidations = {
-            isEmpty: validations['isEmpty'] || false,
-            minLength: validations['minLength'] || null,
-            maxLength: validations['maxLength'] || null
-        }
 
-        for (const validation in sortedValidations) {
+        for (const validation in validations) {
             switch (validation) {
-                case 'isEmpty':
+                case 'notEmpty':
                     if (!value) {
                         newErrors.push('Поле не может быть пустым')
                     }
                     break;
                 case 'minLength':
-                    const minLength = sortedValidations[validation]
+                    const minLength = validations[validation]
                     if (value.length < minLength) {
                         newErrors.push(`Поле не может быть меньше ${minLength} символов`)
                     }
                     break;
+                case 'length':
+                    if (value.length !== validations[validation]) {
+                        newErrors.push(`Поле должно содержать ${validations[validation]} символов`)
+                    }
+                    break;
                 case 'maxLength':
-                    const maxLength = sortedValidations[validation]
+                    const maxLength = validations[validation]
                     if (value.length > maxLength) {
                         newErrors.push(`Поле не может быть больше ${maxLength} символов`)
                     }
-
+                    break;
+                case 'isEmail':
+                    const emailRegex = /\S+@\S+\.\S+/
+                    if (!emailRegex.test(value)) {
+                        newErrors.push(`Введите корректный email адрес`)
+                    }
+                    break;
+                case 'isPassword':
+                    const passwordRegex = /^(?=.*[\p{Ll}])(?=.*[\p{Lu}])(?=.*\d).*$/u
+                    if (!passwordRegex.test(value)) {
+                        newErrors.push(`Пароль должен содержать заглавные и строчные буквы, а также цифры`)
+                    }
+                    break;
+                case 'isPhoneNumber':
+                    const phoneNumberRegex = /^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/
+                    if (!phoneNumberRegex.test(value)) {
+                        newErrors.push("Неверный формат номера телефона");
+                    }
+                    break;
+                case 'isDigit':
+                    const digitRegex = /^\d+$/;
+                    if (!digitRegex.test(value)) {
+                        newErrors.push("Поле должно содержать только цифры");
+                    }
+                    break;
             }
         }
 

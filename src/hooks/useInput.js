@@ -16,6 +16,7 @@ export const useInput = (initialValue, validations) => {
 
     return {
         value,
+        setValue,
         onChange,
         onBlur,
         isDirty,

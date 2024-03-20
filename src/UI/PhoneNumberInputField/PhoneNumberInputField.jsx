@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import classes from "./PhoneNumberInputField.module.css";
 
-const PhoneNumberInputField = ({ labelText, value, setValue}) => {
+const PhoneNumberInputField = ({ labelText, value, setValue, ...props}) => {
     const inputRef = useRef(null);
     const handleInputChange = (e) => {
         let inputValue = e.target.value;
@@ -65,6 +65,7 @@ const PhoneNumberInputField = ({ labelText, value, setValue}) => {
                 onKeyDown={handleKeyDown}
                 onClick={handleInputClick}
                 required
+                {...props}
             />
         </div>
     );

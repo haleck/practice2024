@@ -7,8 +7,8 @@ import {useInput} from "../../hooks/useInput.js";
 import classes from "../styles/FormsCommonStyles.module.css"
 
 const EmailPasswordAuth = ({authMethodChange}) => {
-    const email = useInput('', {isEmpty: true, minLength: 3, maxLength: 10})
-    const password = useInput('', {isEmpty: true, minLength: 3, maxLength: 10})
+    const email = useInput('', {notEmpty: true, minLength: 5, maxLength: 50, isEmail: true})
+    const password = useInput('', {notEmpty: true, minLength: 8, maxLength: 50, isPassword: true})
 
     const handleSubmit = (e) => {
         e.preventDefault();
