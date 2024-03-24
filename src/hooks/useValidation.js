@@ -19,7 +19,7 @@ export const useValidation = (value, validations={}) => {
                         newErrors.push(`Поле не может быть меньше ${minLength} символов`)
                     }
                     break;
-                case 'length':
+                case 'requiredLength':
                     if (value.length !== validations[validation]) {
                         newErrors.push(`Поле должно содержать ${validations[validation]} символов`)
                     }

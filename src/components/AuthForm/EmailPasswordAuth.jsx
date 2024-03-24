@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import InputField from "../../UI/InputField/InputField.jsx";
 import Button from "../../UI/StdBtn/Button.jsx";
 import Separator from "../../UI/Separator/Separator.jsx";

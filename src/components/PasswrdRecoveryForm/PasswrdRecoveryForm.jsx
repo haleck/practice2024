@@ -3,11 +3,14 @@ import classes from "../styles/FormsCommonStyles.module.css";
 import {useNavigate} from "react-router-dom";
 import InputField from "../../UI/InputField/InputField.jsx";
 import Button from "../../UI/StdBtn/Button.jsx";
+import {useInput} from "../../hooks/useInput.js";
 
 const PasswrdRecoveryForm = () => {
     const navigate = useNavigate()
 
-    const [email, setEmail] = useState('')
+    // const [email, setEmail] = useState('')
+    const email = useInput('', {notEmpty: true, minLength: 5, maxLength: 50, isEmail: true})
+
     const [linkIsSent, setLinkIsSent] = useState(false)
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -25,11 +28,13 @@ const PasswrdRecoveryForm = () => {
                         labelText={'Email:'}
                         type="email"
                         name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        value={email.value}
+                        onChange={email.onChange}
+                        onBlur={email.onBlur}
                         required
                     />
-                    <Button type={'submit'}>Восстановить</Button>
+                    {email.isDirty && email.error && <div className={classes.error}>{email.errorText}</div>}
+                    <Button type={'submit'} disabled={email.error}>Восстановить</Button>
                 </form>
             :
                 <div style={{textAlign: 'center'}}>

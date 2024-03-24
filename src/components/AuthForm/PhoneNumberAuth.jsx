@@ -8,10 +8,11 @@ import Separator from "../../UI/Separator/Separator.jsx";
 import {useInput} from "../../hooks/useInput.js";
 
 const PhoneNumberAuth = ({authMethodChange}) => {
-    const phoneNumber = useInput('+7', {isEmpty: true, isPhoneNumber: true})
+    const phoneNumber = useInput('+7', {isPhoneNumber: true})
+    const phoneCode = useInput('', {notEmpty: true, isDigit: true, requiredLength: 5})
+
     const [isSmsSent, setIsSmsSent] = useState(false);
     const [timer, setTimer] = useState(60)
-    const [smsCode, setSmsCode] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -42,12 +43,14 @@ const PhoneNumberAuth = ({authMethodChange}) => {
                         name="code"
                         type="text"
                         id="code"
-                        value={smsCode}
-                        onChange={(e)=>setSmsCode(e.target.value)}
+                        value={phoneCode.value}
+                        onChange={phoneCode.onChange}
+                        onBlur={phoneCode.onBlur}
                         required
                     />
+                    {phoneCode.isDirty && phoneCode.error && <div className={classes.error}>{phoneCode.errorText}</div>}
 
-                    <Button type={"submit"}>ОК</Button>
+                    <Button type={"submit"} disabled={phoneCode.error}>ОК</Button>
 
                     <div className={classes.sendAgain}>
                         {timer > 0?

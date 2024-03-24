@@ -4,28 +4,25 @@ import {useNavigate} from "react-router-dom";
 import InputField from "../../UI/InputField/InputField.jsx";
 import Button from "../../UI/StdBtn/Button.jsx";
 import CustomLink from "../../UI/CustomLink/CustomLink.jsx";
+import {useInput} from "../../hooks/useInput.js";
 
 const RegForm = () => {
     const navigate = useNavigate()
 
-    const [formData, setFormData] = useState({
-        email: '',
-        password: '',
-        repeat: '',
-        name: '',
-        surname: ''
-    });
+    const email = useInput('', {notEmpty: true, minLength: 5, maxLength: 50, isEmail: true})
+    const password = useInput('', {notEmpty: true, minLength: 8, maxLength: 50, isPassword: true})
+    const repeat = useInput('', {notEmpty: true, minLength: 8, maxLength: 50, isPassword: true})
+    const name = useInput('', {notEmpty: true, minLength: 1, maxLength: 50})
+    const surname = useInput('', {notEmpty: true, minLength: 1, maxLength: 50})
 
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        });
-    };
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Отправка формы регистрации на сервер')
     };
+
+    const buttonIsDisabled = () => {
+        return email.error || password.error || repeat.error || password.value !== repeat.value || name.error || surname.error
+    }
 
     return (
         <div className={classes.formBlock}>
@@ -36,43 +33,54 @@ const RegForm = () => {
                     labelText={'Email:'}
                     type="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
+                    value={email.value}
+                    onChange={email.onChange}
+                    onBlur={email.onBlur}
                     required
                 />
+                {email.isDirty && email.error && <div className={classes.error}>{email.errorText}</div>}
                 <InputField
                     labelText={'Name:'}
                     type="text"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
+                    value={name.value}
+                    onChange={name.onChange}
+                    onBlur={name.onBlur}
                     required
                 />
+                {name.isDirty && name.error && <div className={classes.error}>{name.errorText}</div>}
                 <InputField
                     labelText={'Surname:'}
                     type="text"
                     name="surname"
-                    value={formData.surname}
-                    onChange={handleChange}
+                    value={surname.value}
+                    onChange={surname.onChange}
+                    onBlur={surname.onBlur}
                     required
                 />
+                {surname.isDirty && surname.error && <div className={classes.error}>{surname.errorText}</div>}
                 <InputField
                     labelText={'Password:'}
                     type="password"
                     name="password"
-                    value={formData.password}
-                    onChange={handleChange}
+                    value={password.value}
+                    onChange={password.onChange}
+                    onBlur={password.onBlur}
                     required
                 />
+                {password.isDirty && password.error && <div className={classes.error}>{password.errorText}</div>}
                 <InputField
                     labelText={'Repeat:'}
                     type="password"
                     name="repeat"
-                    value={formData.repeat}
-                    onChange={handleChange}
+                    value={repeat.value}
+                    onChange={repeat.onChange}
+                    onBlur={repeat.onBlur}
                     required
                 />
-                <Button type={'submit'}>Зарегистрироваться</Button>
+                {repeat.isDirty && repeat.error && <div className={classes.error}>{repeat.errorText}</div>}
+                {password.value !== repeat.value && <div className={classes.error}>Пароли не совпадают</div>}
+                <Button type={'submit'} disabled={buttonIsDisabled()}>Зарегистрироваться</Button>
             </form>
 
             <CustomLink path={'/auth'}>Уже есть аккаунт? Вход</CustomLink>
