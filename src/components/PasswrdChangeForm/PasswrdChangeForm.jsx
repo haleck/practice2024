@@ -37,12 +37,13 @@ const PasswrdChangeForm = ({fromEmail}) => {
                     {!fromEmail &&
                         <>
                             <InputField
-                                labelText={'Old:'}
+                                labelText={'Введите старый пароль:'}
                                 type="password"
                                 name="oldPassword"
                                 value={oldPassword.value}
                                 onChange={oldPassword.onChange}
                                 onBlur={oldPassword.onBlur}
+                                placeholder={'********'}
                                 required
                             />
                             {oldPassword.isDirty && oldPassword.error && <div className={classes.error}>{oldPassword.errorText}</div>}
@@ -50,22 +51,24 @@ const PasswrdChangeForm = ({fromEmail}) => {
                     }
                     {/*Иначе - пользователь восстанавливает пароль, который не знает*/}
                     <InputField
-                        labelText={'New:'}
+                        labelText={'Введите новый пароль:'}
                         type="password"
                         name="newPassword"
                         value={newPassword.value}
                         onChange={newPassword.onChange}
                         onBlur={newPassword.onBlur}
+                        placeholder={'********'}
                         required
                     />
                     {newPassword.isDirty && newPassword.error && <div className={classes.error}>{newPassword.errorText}</div>}
                     <InputField
-                        labelText={'Repeat:'}
+                        labelText={'Введите новый пароль повторно:'}
                         type="password"
                         name="repeatPassword"
                         value={repeatPassword.value}
                         onChange={repeatPassword.onChange}
                         onBlur={repeatPassword.onBlur}
+                        placeholder={'********'}
                         required
                     />
                     {repeatPassword.isDirty && repeatPassword.error && <div className={classes.error}>{repeatPassword.errorText}</div>}

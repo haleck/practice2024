@@ -39,13 +39,14 @@ const PhoneNumberAuth = ({authMethodChange}) => {
             {isSmsSent?
                 <form onSubmit={handleSubmit}>
                     <InputField
-                        labelText={"Код из смс:"}
+                        labelText={"Введите код из смс:"}
                         name="code"
                         type="text"
                         id="code"
                         value={phoneCode.value}
                         onChange={phoneCode.onChange}
                         onBlur={phoneCode.onBlur}
+                        placeholder={'XXXXX'}
                         required
                     />
                     {phoneCode.isDirty && phoneCode.error && <div className={classes.error}>{phoneCode.errorText}</div>}
@@ -63,7 +64,7 @@ const PhoneNumberAuth = ({authMethodChange}) => {
                 :
                 <form onSubmit={handleSubmit}>
                     <PhoneNumberInputField
-                        labelText={"Телефон:"}
+                        labelText={"Введите номер телефона:"}
                         value={phoneNumber.value}
                         setValue={phoneNumber.setValue}
                         onBlur={phoneNumber.onBlur}

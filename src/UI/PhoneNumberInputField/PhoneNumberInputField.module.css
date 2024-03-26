@@ -4,14 +4,15 @@
 }
 .inputBlock > label {
   position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
+  top: 8px;
+  left: 16px;
   opacity: 50%;
+  font-size: 10px;
 }
 .inputBlock > input {
   width: 100%;
-  padding: 5px 5px 5px 90px;
+  padding: 23px 14px 8px 14px;
+  font-size: 14px;
 }
 
 /*# sourceMappingURL=PhoneNumberInputField.module.css.map */

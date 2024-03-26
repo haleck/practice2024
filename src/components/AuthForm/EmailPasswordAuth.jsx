@@ -19,22 +19,24 @@ const EmailPasswordAuth = ({authMethodChange}) => {
         <>
             <form onSubmit={handleSubmit}>
                 <InputField
-                    labelText="Email:"
+                    labelText="Введите почту:"
                     type="email"
                     name="email"
                     value={email.value}
                     onChange={email.onChange}
                     onBlur={email.onBlur}
+                    placeholder={'Example@gmail.com'}
                     required
                 />
                 {email.isDirty && email.error && <div className={classes.error}>{email.errorText}</div>}
                 <InputField
-                    labelText="Password:"
+                    labelText="Введите пароль:"
                     type="password"
                     name="password"
                     value={password.value}
                     onChange={password.onChange}
                     onBlur={password.onBlur}
+                    placeholder={'********'}
                     required
                 />
                 {password.isDirty && password.error && <div className={classes.error}>{password.errorText}</div>}

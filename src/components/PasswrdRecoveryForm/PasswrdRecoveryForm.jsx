@@ -25,12 +25,13 @@ const PasswrdRecoveryForm = () => {
             {!linkIsSent?
                 <form action="" onSubmit={handleSubmit}>
                     <InputField
-                        labelText={'Email:'}
+                        labelText={'Введите почту от аккаунта:'}
                         type="email"
                         name="email"
                         value={email.value}
                         onChange={email.onChange}
                         onBlur={email.onBlur}
+                        placeholder={"Example@gmail.com"}
                         required
                     />
                     {email.isDirty && email.error && <div className={classes.error}>{email.errorText}</div>}

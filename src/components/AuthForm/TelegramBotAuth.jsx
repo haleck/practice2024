@@ -7,18 +7,19 @@ import {useInput} from "../../hooks/useInput.js";
 import classes from "../styles/FormsCommonStyles.module.css";
 
 const TelegramBotAuth = ({authMethodChange}) => {
-    const tgCode = useInput('', {notEmpty: true, isDigit: true, requiredLength: 5})
+    const tgCode = useInput('', {notEmpty: true, requiredLength: 10})
 
     return (
         <>
             <InputField
-                labelText={"Код тг:"}
+                labelText={"Введите из телеграм:"}
                 name="code"
                 type="text"
                 id="code"
                 value={tgCode.value}
                 onChange={tgCode.onChange}
                 onBlur={tgCode.onBlur}
+                placeholder={'XXXXXXXXXX'}
                 required
             />
             {tgCode.isDirty && tgCode.error && <div className={classes.error}>{tgCode.errorText}</div>}
