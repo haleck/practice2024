@@ -1,18 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import InputField from "../../UI/InputField/InputField.jsx";
 import Button from "../../UI/StdBtn/Button.jsx";
 import Separator from "../../UI/Separator/Separator.jsx";
 import CustomLink from "../../UI/CustomLink/CustomLink.jsx";
 import {useInput} from "../../hooks/useInput.js";
 import classes from "../styles/FormsCommonStyles.module.css"
+import Popup from "../../UI/Popup/Popup.jsx";
 
 const EmailPasswordAuth = ({authMethodChange}) => {
     const email = useInput('', {notEmpty: true, minLength: 5, maxLength: 50, isEmail: true})
     const password = useInput('', {notEmpty: true, minLength: 8, maxLength: 50, isPassword: true})
 
+    const [popUpIsOpen, setPopUpIsOpen] = useState(false)
+    const serverError = true
+
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Отправка формы на сервер')
+
+        if (serverError) {
+            setPopUpIsOpen(true)
+        }
     };
 
     return (
@@ -49,6 +57,8 @@ const EmailPasswordAuth = ({authMethodChange}) => {
 
             <Button onClick={()=> authMethodChange('phone')}>Вход по номеру телефона</Button>
             <Button onClick={() => authMethodChange('telegram')}>Вход по коду из ТГ бота</Button>
+
+            <Popup text={'Произошла непредвиденная ошибка.\nПожалуйста, попробуйте позже'} isOpen={popUpIsOpen} setIsOpen={setPopUpIsOpen}/>
         </>
     );
 };
