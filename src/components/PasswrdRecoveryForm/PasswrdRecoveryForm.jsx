@@ -32,6 +32,7 @@ const PasswrdRecoveryForm = () => {
                         onChange={email.onChange}
                         onBlur={email.onBlur}
                         placeholder={"Example@gmail.com"}
+                        style={email.isDirty && email.error? {borderColor: 'red'} : {}}
                         required
                     />
                     {email.isDirty && email.error && <div className={classes.error}>{email.errorText}</div>}

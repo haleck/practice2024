@@ -39,6 +39,7 @@ const RegForm = () => {
                     onChange={email.onChange}
                     onBlur={email.onBlur}
                     placeholder={'Example@gmail.com'}
+                    style={email.isDirty && email.error? {borderColor: 'red'} : {}}
                     required
                 />
                 {email.isDirty && email.error && <div className={classes.error}>{email.errorText}</div>}
@@ -50,6 +51,7 @@ const RegForm = () => {
                     onChange={name.onChange}
                     onBlur={name.onBlur}
                     placeholder={'Ваше имя'}
+                    style={name.isDirty && name.error? {borderColor: 'red'} : {}}
                     required
                 />
                 {name.isDirty && name.error && <div className={classes.error}>{name.errorText}</div>}
@@ -61,6 +63,7 @@ const RegForm = () => {
                     onChange={surname.onChange}
                     onBlur={surname.onBlur}
                     placeholder={'Ваша фамилия'}
+                    style={surname.isDirty && surname.error? {borderColor: 'red'} : {}}
                     required
                 />
                 {surname.isDirty && surname.error && <div className={classes.error}>{surname.errorText}</div>}
@@ -69,6 +72,8 @@ const RegForm = () => {
                     value={phoneNumber.value}
                     setValue={phoneNumber.setValue}
                     onBlur={phoneNumber.onBlur}
+                    style={phoneNumber.isDirty && phoneNumber.error? {borderColor: 'red'} : {}}
+                    required
                 />
                 {phoneNumber.isDirty && phoneNumber.error && <div className={classes.error}>{phoneNumber.errorText}</div>}
                 <InputField
@@ -79,6 +84,7 @@ const RegForm = () => {
                     onChange={password.onChange}
                     onBlur={password.onBlur}
                     placeholder={'********'}
+                    style={password.isDirty && password.error? {borderColor: 'red'} : {}}
                     required
                 />
                 {password.isDirty && password.error && <div className={classes.error}>{password.errorText}</div>}
@@ -90,6 +96,7 @@ const RegForm = () => {
                     onChange={repeat.onChange}
                     onBlur={repeat.onBlur}
                     placeholder={'********'}
+                    style={repeat.isDirty && repeat.error? {borderColor: 'red'} : {}}
                     required
                 />
                 {repeat.isDirty && repeat.error && <div className={classes.error}>{repeat.errorText}</div>}

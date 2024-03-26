@@ -44,6 +44,7 @@ const PasswrdChangeForm = ({fromEmail}) => {
                                 onChange={oldPassword.onChange}
                                 onBlur={oldPassword.onBlur}
                                 placeholder={'********'}
+                                style={oldPassword.isDirty && oldPassword.error? {borderColor: 'red'} : {}}
                                 required
                             />
                             {oldPassword.isDirty && oldPassword.error && <div className={classes.error}>{oldPassword.errorText}</div>}
@@ -58,6 +59,7 @@ const PasswrdChangeForm = ({fromEmail}) => {
                         onChange={newPassword.onChange}
                         onBlur={newPassword.onBlur}
                         placeholder={'********'}
+                        style={newPassword.isDirty && newPassword.error? {borderColor: 'red'} : {}}
                         required
                     />
                     {newPassword.isDirty && newPassword.error && <div className={classes.error}>{newPassword.errorText}</div>}
@@ -69,6 +71,7 @@ const PasswrdChangeForm = ({fromEmail}) => {
                         onChange={repeatPassword.onChange}
                         onBlur={repeatPassword.onBlur}
                         placeholder={'********'}
+                        style={repeatPassword.isDirty && repeatPassword.error? {borderColor: 'red'} : {}}
                         required
                     />
                     {repeatPassword.isDirty && repeatPassword.error && <div className={classes.error}>{repeatPassword.errorText}</div>}

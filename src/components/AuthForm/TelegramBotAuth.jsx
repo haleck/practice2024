@@ -20,6 +20,7 @@ const TelegramBotAuth = ({authMethodChange}) => {
                 onChange={tgCode.onChange}
                 onBlur={tgCode.onBlur}
                 placeholder={'XXXXXXXXXX'}
+                style={tgCode.isDirty && tgCode.error? {borderColor: 'red'} : {}}
                 required
             />
             {tgCode.isDirty && tgCode.error && <div className={classes.error}>{tgCode.errorText}</div>}

@@ -34,6 +34,7 @@ const EmailPasswordAuth = ({authMethodChange}) => {
                     onChange={email.onChange}
                     onBlur={email.onBlur}
                     placeholder={'Example@gmail.com'}
+                    style={email.isDirty && email.error? {borderColor: 'red'} : {}}
                     required
                 />
                 {email.isDirty && email.error && <div className={classes.error}>{email.errorText}</div>}
@@ -45,6 +46,7 @@ const EmailPasswordAuth = ({authMethodChange}) => {
                     onChange={password.onChange}
                     onBlur={password.onBlur}
                     placeholder={'********'}
+                    style={password.isDirty && password.error? {borderColor: 'red'} : {}}
                     required
                 />
                 {password.isDirty && password.error && <div className={classes.error}>{password.errorText}</div>}

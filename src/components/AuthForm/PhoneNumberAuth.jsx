@@ -47,6 +47,7 @@ const PhoneNumberAuth = ({authMethodChange}) => {
                         onChange={phoneCode.onChange}
                         onBlur={phoneCode.onBlur}
                         placeholder={'XXXXX'}
+                        style={phoneCode.isDirty && phoneCode.error? {borderColor: 'red'} : {}}
                         required
                     />
                     {phoneCode.isDirty && phoneCode.error && <div className={classes.error}>{phoneCode.errorText}</div>}
@@ -68,6 +69,7 @@ const PhoneNumberAuth = ({authMethodChange}) => {
                         value={phoneNumber.value}
                         setValue={phoneNumber.setValue}
                         onBlur={phoneNumber.onBlur}
+                        style={phoneNumber.isDirty && phoneNumber.error? {borderColor: 'red'} : {}}
                     />
                     {phoneNumber.isDirty && phoneNumber.error && <div className={classes.error}>{phoneNumber.errorText}</div>}
 
